@@ -1,7 +1,8 @@
-a, b, s = 1, 0, 0
-while s < 4000:
-	a, b = a+b, a
-	if a % 2 == 0:
-		s += a
-
-print s
+def fib(limit = 4000):
+	a, b, s = 1, 0, 0
+	while s < limit:
+		a, b = a+b, a
+		if a % 2 == 0:
+			s += a
+	
+	print s
