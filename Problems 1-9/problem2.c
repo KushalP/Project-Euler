@@ -1,21 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdint.h>
-
-int fib(int n);
-
+ 
 int main()
 {
-	printf("%d", fib(10));
-}
-
-int fib(int n)
-{
-	if (n == 0 || n == 1)
+	unsigned int a = 1, b = 1, c = 2, sum = 0;
+	
+	while (c < 4000000)
 	{
-		return 1;
+		c = a + b;
+		sum += c * !(c % 2);
+		a = b;
+		b = c;
 	}
-
-	return fib(n-1) + fib(n-2);
+	
+	printf("%u\n", sum);
+	
+	return 0;
 }
