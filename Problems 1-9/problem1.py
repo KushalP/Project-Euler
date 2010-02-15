@@ -5,3 +5,6 @@ def natural_fizzbuzz(limit = 1000):
 		if i % 3 == 0 or i % 5 == 0:
 			s += i
 	return s
+
+if __name__ == "__main__":
+	print "Answer: ", natural_fizzbuzz(1000)
