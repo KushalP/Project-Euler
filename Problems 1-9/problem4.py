@@ -1,9 +1,10 @@
 def is_palindrome(n):
 	if isinstance(n, str):
-		#If we've been given a string, check if the reverse is the same
+		# If we've been given a string, check if the reverse is the same
 		return n == n[::-1]
 	else:
-		return n == n[::-1]
+		# We're going to convert our input to a string and reverse it
+		return str(n) == str(n)[::-1]
 
 if __name__ == '__main__':
 	palindrome = "racecar"
