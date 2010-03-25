@@ -15,7 +15,8 @@ def find_largest_prime_number(upper_limit = 1000):
 			if (x * y) > max_palindrome and is_palindrome(x * y):
 				max_palindrome = x * y
 	
-	print "The largest palindrome product of numbers under %d is %d\n", (upper_limit, max_palindrome)
+	print "The largest palindrome product of numbers under %d is %d\n" %\
+		(upper_limit, max_palindrome)
 	
 	return max_palindrome
 
