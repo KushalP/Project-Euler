@@ -1,7 +1,7 @@
 Project Euler solutions
 ========
 
-These are a bunch of my solutions to the math problems found on the [Project Euler][1] website.
+These are a bunch of my solutions to the maths problems found on the [Project Euler][1] website.
 
 
 C
