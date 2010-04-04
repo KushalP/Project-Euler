@@ -15,7 +15,7 @@ int main()
 unsigned int sieve_of_eratosthenes(unsigned int n)
 {
 	char *sieve;
-	unsigned int i, upper_limit = 1000000;
+	unsigned int i, result = 0, upper_limit = 1000000;
 	unsigned count = 0;
 	
 	sieve = calloc(n, sizeof *sieve); //Initialises to zero
@@ -30,8 +30,8 @@ unsigned int sieve_of_eratosthenes(unsigned int n)
 
 			if (count == n)
 			{
-				free(sieve); //we've reached our nth prime, clean up memory
-				return i;
+				result = i;
+				break; //We've found our value, so exit the loop
 			}
 
 			for (j = i*2; j < upper_limit; j += i)
@@ -41,7 +41,7 @@ unsigned int sieve_of_eratosthenes(unsigned int n)
 		}
 	}
 
-	free(sieve);
+	free(sieve); //Clear up our memory
 
-	return 0;
+	return result;
 }
