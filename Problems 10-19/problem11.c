@@ -27,5 +27,22 @@ int main()
 		{1,70,54,71,83,51,54,69,16,92,33,48,61,43,52,1,89,19,67,48},
 	};
 
+	unsigned int max_product;
+	unsigned int i, j, right, down, left_diagonal, right_diagonal;
+
+	for (i = 0; i < N-3; i++)
+	{
+		for (j = 0; j < N-3; j++)
+		{
+			right = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+			down = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+			left_diagonal = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][i+3];
+			right_diagonal = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
+
+			printf("Right: %u \nDown: %u \nLeft Diag: %u \nRight Diag: %u \n", 
+				right, down, left_diagonal, right_diagonal);
+		}
+	}
+
 	return 0;
 }
