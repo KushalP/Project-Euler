@@ -2,9 +2,11 @@
 
 #define N 20
 
+static __inline unsigned int max(unsigned int a, unsigned int b);
+
 int main()
 {
-	unsigned grid[N][N] = {
+	unsigned int grid[N][N] = {
 		{8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8},
 		{49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,0},
 		{81,49,31,73,55,79,14,29,93,71,40,67,53,88,30,3,49,13,36,65},
@@ -39,10 +41,24 @@ int main()
 			left_diagonal = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][i+3];
 			right_diagonal = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
 
-			printf("Right: %u \nDown: %u \nLeft Diag: %u \nRight Diag: %u \n", 
-				right, down, left_diagonal, right_diagonal);
+			/**
+			 * This was originally a lot of IF statements, but is simplified
+			 * thanks to an inline static method which just finds the greater
+			 * of any input it's given
+			 */
+			max_product = max(max_product, max(right, max(down, max(left_diagonal, right_diagonal))));
 		}
 	}
 
+	printf("The greatest product of four numbers in any direction in the given grid is: %u\n", max_product);
+
 	return 0;
+}
+
+/**
+ * Return the greatest of two given integers
+ */
+unsigned int max(unsigned int a, unsigned int b)
+{
+	return a > b ? a : b;
 }
