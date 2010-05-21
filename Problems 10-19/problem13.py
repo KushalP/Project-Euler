@@ -110,16 +110,39 @@ def brute_force(numbers):
 	# done purely so we can splice it nicely
 	return str(sum(mapped_numbers))[0:10]
 
+def smart_sum(numbers):
+	"""Interestingly, doing near enough the same work on our problem set, \
+		but wrapping it with a lambda function seems to reduce the time \
+		taken to compute by a third."""
+	mapped_numbers = map(lambda number: int(number), numbers.split("\n"))
+
+	return str(sum(mapped_numbers))[0:10]
+
 if __name__ == "__main__":
+	#
+	# Brute force it
+	#
 	print "Brute forcing..."
 	
 	# We need to know when we started our computation
 	brute_t_start = datetime.datetime.now()
-
+	
 	# Run our brute force algo
 	print "Answer:", brute_force(numbers)
-
+	
 	# Find our end time
 	brute_t_end = datetime.datetime.now()
-
 	print "Time:", str(brute_t_end - brute_t_start)
+
+	#
+	# Try something a little smarter
+	#
+	print "\n\nRunning the Smart algo..."
+
+	smart_t_start = datetime.datetime.now()
+
+	# Run our smart algo
+	print "Answer:", smart_sum(numbers)
+
+	smart_t_end = datetime.datetime.now()
+	print "Time:", str(smart_t_end - smart_t_start)
