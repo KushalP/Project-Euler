@@ -1,11 +1,17 @@
+/**
+ * Make sure that when compiling, GMP is installed and
+ * that you use the flag -lgmp if using gcc/cc
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <gmp.h>
 
 #define N 100
 
 int main()
 {
-	char digits[][N] = {
+	char numbers[][N] = {
 		"37107287533902102798797998220837590246510135740250",
 		"46376937677490009712648124896970078050417018260538",
 		"74324986199524741059474233309513058123726617309629",
@@ -111,5 +117,44 @@ int main()
 	int i;
 	char *str;
 
+	// A struct from GMP. Handles large numbers as D fields
+	// and finds size and sign given limbs and pointers.
+	mpz_t sum, t;
+
+	// This is an Integer function to initialise our uint
+	mpz_init_set_ui(sum, 0);
+	
+	// Initialise a plain int
+	mpz_init(t);
+
+	for (i = 0; i < N; i++)
+	{
+		// Go through our string array, setting t to the value
+		// after converting the string to base10
+		mpz_set_str(t, numbers[i], 10);
+
+		// Add our large integer onto the sum
+		mpz_add(sum, sum, t);
+	}
+
+	// Using NULL as the op so that the method will allocate memory
+	// and pass us a pointer to the value, rather than us having
+	// to worry about dealing with malloc for a value we don't 
+	// know how big it is.
+	//
+	// Convert to base10
+	str = mpz_get_str(NULL, 10, sum);
+
+	// Zero ended, only need the first 10 digits
+	str[10] = 0;
+	
+	printf("Answer: ");
+	puts(str);
+
+	// Make sure we clean up our memory
+	free(str);
+	mpz_clear(sum);
+	mpz_clear(t);
+	
 	return EXIT_SUCCESS;
 }
