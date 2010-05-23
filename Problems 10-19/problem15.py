@@ -1,10 +1,4 @@
-def factorial(n):
-	product = 1
-
-	for i in xrange(1, n + 1):
-		product *= i
-	
-	return product
+from math import factorial
 
 if __name__ == "__main__":
 	side_length = 20
