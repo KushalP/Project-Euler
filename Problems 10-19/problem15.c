@@ -1,34 +1,21 @@
 #include <stdio.h>
-
-unsigned int factorial(unsigned int n);
-unsigned int get_combination(unsigned int n, unsigned int k);
+#include <gmp.h>
 
 int main()
 {
-	unsigned int side_length = 20, choose_side = 40;
+	char* result_str;
+	unsigned int n = 40, k = 20;
+	mpz_t result;
 
-	printf("%u paths when side length is %u", get_combination(choose_side, side_length), side_length);
+	mpz_init(result);
+
+	mpz_bin_uiui(result, n, k),
+
+	result_str = mpz_get_str(NULL, 10, result);
+
+	printf("%s paths when side length is %u\n", 
+		result_str,
+		k);
 
 	return 0;
-}
-
-unsigned int factorial(unsigned int n)
-{
-	unsigned int product = 1, i;
-
-	for (i = n; i > 0; i--)
-		product *= i;
-	
-	return product;
-}
-
-unsigned int get_combination(unsigned int n, unsigned int k)
-{
-	unsigned int x, y, z;
-
-	x = factorial(n);
-	y = factorial(k);
-	z = factorial(n - k);
-
-	return x / (y * z);
 }
