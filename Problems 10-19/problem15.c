@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <gmp.h>
 
 int main()
@@ -16,6 +17,9 @@ int main()
 	printf("%s paths when side length is %u\n", 
 		result_str,
 		k);
+
+	free(result_str);
+	mpz_clear(result);
 
 	return 0;
 }
