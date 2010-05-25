@@ -37,7 +37,9 @@ def count_letters_in_words(upper_bound = 1000):
 		0: 0
 	}
 
-	hundreds_sum = len("hundred")
+	hundreds = len("hundred")
+	ands = len("and")
+
 	letter_sum = 0;
 
 	for i in xrange(1, 10):
@@ -58,9 +60,9 @@ def count_letters_in_words(upper_bound = 1000):
 			tens = unique_numbers[i % 100]
 
 		if tens != 0:
-			letter_sum += tens + hundreds_sum + 3
+			letter_sum += tens + hundreds + ands
 		else:
-			letter_sum += hundreds_sum
+			letter_sum += hundreds
 	
 	letter_sum += unique_numbers[1000]
 	
