@@ -1,6 +1,9 @@
 -module(problem1).
 -compile(export_all).
 
+main() ->
+    io:format("Answer: ~p~n", [solution(1000)]).
+
 solution(N) ->
     sum(N, 3) + sum(N, 5) - sum(N, 15).
 

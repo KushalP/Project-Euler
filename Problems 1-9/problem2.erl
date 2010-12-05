@@ -1,6 +1,9 @@
 -module(problem2).
 -compile(export_all).
 
+main() ->
+    io:format("Answer: ~p~n", [solution(4000000)]).
+
 solution(0) -> 0;
 solution(1) -> 0;
 solution(2) -> 2;

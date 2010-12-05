@@ -2,9 +2,10 @@
 -import(math).
 -compile(export_all).
 
-solution(N) ->
+main() ->
+    N = 600851475143,
     Greatest = factor(1, N),
-    io:format("Answer: ~w~n", [Greatest]).
+    io:format("Answer: ~p~n", [Greatest]).
 
 factor(Greatestsofar, N) ->
     Max = math:sqrt(N),
